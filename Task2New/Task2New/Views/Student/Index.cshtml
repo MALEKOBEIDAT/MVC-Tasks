@@ -1,0 +1,29 @@
+﻿@model Task2New.Models.Student
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Student</h1>
+@foreach (var Student in ViewBag.Student)
+{
+
+    <table class="table table-bordered">
+        <tr>
+            <td>@Student.ID</td>
+        </tr>
+        <tr>
+            <td>@Student.Name</td>
+        </tr>
+
+        <tr>
+            <td>@Student.Major</td>
+        </tr>
+        <tr>
+            <td>@Student.Faculity</td>
+        </tr>
+    </table>
+
+
+
+}

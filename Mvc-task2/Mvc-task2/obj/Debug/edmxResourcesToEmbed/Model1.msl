@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvcTaskModelStoreContainer" CdmEntityContainer="MvcTaskEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="MvcTaskModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MvcTaskModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Productid" ColumnName="Productid" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />
+          <ScalarProperty Name="Unitsstock" ColumnName="Unitsstock" />
+          <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
