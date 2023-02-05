@@ -11,41 +11,19 @@ namespace task3Mvc
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Information
     {
+
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Your Name") , MaxLength(12)]
-        [Display(Name = "First Name")]
-
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Please Enter Your Name"), MaxLength(12)]
-        [Display(Name = "Last Name")]
-
         public string LastName { get; set; }
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        
-
-        
-
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Your Phone")]
-        [DataType(DataType.PhoneNumber)]
-
-
         public Nullable<int> Phone { get; set; }
-        [Required]
-        [Range(18, 70 , ErrorMessage ="Age from 18 to 70 Only") ]
         public Nullable<int> Age { get; set; }
-        [Required(ErrorMessage = "Please Enter Your Jop"), MaxLength(10)]
-        [Display(Name = "Job Title")]
-
         public string Job_Title { get; set; }
-        [Required]
         public string Gender { get; set; }
+        public string Image { get; set; }
+        public string Cv { get; set; }
     }
 }

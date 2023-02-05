@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using task3Mvc;
 
 namespace task3Mvc.Controllers
@@ -15,10 +17,40 @@ namespace task3Mvc.Controllers
         private Entities db = new Entities();
 
         // GET: Information
-        public ActionResult Index()
+        public ActionResult Index(string FirstName,string name)
         {
-            return View(db.Information.ToList());
+
+
+            var emp = db.Information.ToList();
+
+
+            if (name == "First") { emp = db.Information.Where(x => x.FirstName.Contains(FirstName)).ToList(); }
+
+           else if (name == "Last") { emp = db.Information.Where(x => x.LastName.Contains(FirstName)).ToList(); }
+
+            else if (name == "Email") { emp = db.Information.Where(x => x.Email.Contains(FirstName)).ToList(); }
+            else if (name == "Phone") { emp = db.Information.Where(x => x.Phone.ToString().Contains(FirstName)).ToList(); }
+
+
+            else if (name == "Age") { emp = db.Information.Where(x => x.Age.ToString().Contains(FirstName)).ToList(); }
+
+            
+
+
+            return View(emp);
+
+            
+            
+
+
+
+        //    return View(db.Information.Where(x => x.FirstName.Contains(FirstName) || x.LastName.Contains(FirstName) || x.Email.Contains(FirstName) || FirstName == null).ToList());
+
         }
+
+
+
+        
 
         // GET: Information/Details/5
         public ActionResult Details(int? id)
@@ -44,12 +76,61 @@ namespace task3Mvc.Controllers
         // POST: Information/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
+
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Phone,Age,Job_Title,Gender")] Information information)
+
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Phone,Age,Job_Title,Gender,Image,Cv")] Information information, HttpPostedFileBase Image,HttpPostedFileBase cv)
         {
             if (ModelState.IsValid)
             {
+                if (Image != null)
+                {
+                    if (!Image.ContentType.ToLower().StartsWith("image/"))
+                    {
+                        ModelState.AddModelError("", "file uploaded is not an image");
+                        return View(information);
+                    }
+                    string folderPath = Server.MapPath("~/Content/Images");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(Image.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    Image.SaveAs(path);
+                    information.Image = "../Content/Images/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an image.");
+                    return View(information);
+                }
+
+                if (cv != null)
+                {
+                    //if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    //{
+                    //    ModelState.AddModelError("", "file uploaded is not an image");
+                    //    return View(user);
+                    //}
+                    string folderPath = Server.MapPath("~/Content/CVs");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(cv.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    cv.SaveAs(path);
+                    information.Cv = "../Content/CVs/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an cv.");
+                    return View(information);
+                }
+
                 db.Information.Add(information);
                 db.SaveChanges();
                 return RedirectToAction("Index");
