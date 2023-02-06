@@ -1,0 +1,15 @@
+  <h1 class="sub-title">Skills</h1>
+                    <ol>
+                        <ul>
+                            <li>Work ethic</li> <br>
+
+                            <p>Work ethic is the ability to follow through on tasks and duties in a timely, quality manner. A strong work ethic will help ensure you develop a positive relationship with your employer and colleagues, even when you are still developing technical skills in a new job. Many employers would rather work with someone who has a strong work ethic and is eager to learn than a skilled worker who seems unmotivated.</p> <br>
+
+
+                            <li>Communication</li> <br>
+                            <p>Effective communication skills will be helpful through the interview process and in your career overall. The ability to communicate involves knowing how you should speak to others in different situations or settings. For example, when working with a team on a project, you may need to communicate when you believe an idea or process is ineffective. Finding a way to tactfully and skillfully disagree with others on the job without creating conflict is an important skill that employers value.</p> <br>
+
+                        </ul>
+                    </ol>
+                    
+

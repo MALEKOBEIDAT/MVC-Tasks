@@ -1,0 +1,41 @@
+1. Bitcoin
+The primary application of Blockchain is in Cryptocurrencies like Bitcoin. Bitcoin is a decentralized digital currency introduced by Santoshi Nakamoto
+
+
+
+
+
+
+
+
+
+
+
+2. Payment and Transfers
+Because of Blockchain, only the wallet system has grown up so rapidly, and by using that, we can make the payment and money transfers very quickly; we don’t need to enter the public key. We need to scan a unique QR code and pay soon. The amount done by Blockchain will be highly secure with no transfer fees. For blockchain transfer, no bank account is needed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.Healthcare
+Healthcare is also a domain where Blockchain technology has been used for storing the details of the patients. This technology ensures that anyone accessing this Blockchain can access patients’ data. This database will be highly secure and for checking the data related to the patient-doctor has to log in there with the public key and details, and he can check the patients’ data.
+
+
+
+
+
+
+
+
+4. Voting
+Blockchain can be used in the next election or Voting because of its unchanging revolutionary nature. Voting will become more secure and fail-proof with the help of Blockchain.

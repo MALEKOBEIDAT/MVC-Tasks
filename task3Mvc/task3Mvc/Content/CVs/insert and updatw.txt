@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+namespace database_add_update_delete_test
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection("data source = DESKTOP-SAVUMCP\\SQLEXPRESS; database=Insert.and.delete.update;integrated security=SSPI");
+            connection.Open();
+            SqlCommand com = new SqlCommand("insert into q values(@ID,@Name,@Age)",connection);
+            com.Parameters.AddWithValue("@ID",int.Parse(TextBox1.Text));	
+            com.Parameters.AddWithValue("@Name",(TextBox2.Text));
+            com.Parameters.AddWithValue("@Age", int.Parse(TextBox3.Text));
+            com.ExecuteNonQuery();
+            connection.Close();
+            
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection("data source = DESKTOP-SAVUMCP\\SQLEXPRESS; database=Insert.and.delete.update;integrated security=SSPI");
+            connection.Open();
+            SqlCommand com1 = new SqlCommand("update q set  Name=@Name,Age=@Age where ID=@ID", connection);
+            com1.Parameters.AddWithValue("@ID", int.Parse(TextBox1.Text));
+
+            com1.Parameters.AddWithValue("@Name", (TextBox2.Text));
+            com1.Parameters.AddWithValue("@Age", int.Parse(TextBox3.Text));
+            com1.ExecuteNonQuery();
+            connection.Close();
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection("data source = DESKTOP-SAVUMCP\\SQLEXPRESS; database=Insert.and.delete.update;integrated security=SSPI");
+            connection.Open();
+            SqlCommand com2 = new SqlCommand("delete q where ID=@ID ", connection);
+
+            com2.Parameters.AddWithValue("@ID", int.Parse(TextBox1.Text));
+
+            //com2.Parameters.AddWithValue("@Name", (TextBox2.Text));
+            //com2.Parameters.AddWithValue("@Age", int.Parse(TextBox3.Text));
+            com2.ExecuteNonQuery();
+            connection.Close();
+
+
+        }
+    }
+}

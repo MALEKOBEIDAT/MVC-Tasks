@@ -26,5 +26,6 @@ namespace task3Mvc
         }
     
         public DbSet<Information> Information { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<task3Mvc.Information>
 
+
 @{
     ViewBag.Title = "Index";
 }
 
-
+@Html.Action("partial1","Orders")
 
 <h2>Employee</h2>
 
@@ -20,6 +21,7 @@
 {
                                                                   
     <div>
+
 
         <div>
             <input type="radio"  name="name" value="First" id="First" />
@@ -72,13 +74,6 @@
             <label for="Email">Age</label>
 
         </div>
-
-
-
-
-
-
-
 
 
 
@@ -176,9 +171,10 @@
 
             <td>
 
-                @Html.DisplayFor(modelItem => item.Cv)
+                @*@Html.DisplayFor(modelItem => item.Cv)*@
 
-                <a href="~/Cv/@item.Cv" download>CV</a> 
+                <a href="~/Content/CVs/@item.Cv"download>CV</a>
+                
 
             </td>
 

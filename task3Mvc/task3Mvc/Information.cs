@@ -14,7 +14,11 @@ namespace task3Mvc
     
     public partial class Information
     {
-
+        public Information()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -25,5 +29,8 @@ namespace task3Mvc
         public string Gender { get; set; }
         public string Image { get; set; }
         public string Cv { get; set; }
+    
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
+

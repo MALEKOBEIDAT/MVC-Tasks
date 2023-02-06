@@ -20,8 +20,33 @@
           <Property Name="Image" Type="varchar" MaxLength="255" />
           <Property Name="Cv" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Orders__Customer__398D8EEE">
+          <End Role="Information" Type="Self.Information" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Information">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="taskModelStoreContainer">
           <EntitySet Name="Information" EntityType="Self.Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders__Customer__398D8EEE" Association="Self.FK__Orders__Customer__398D8EEE">
+            <End Role="Information" EntitySet="Information" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -41,10 +66,37 @@
           <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Cv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="taskModel.FK__Orders__Customer__398D8EEE" FromRole="Information" ToRole="Order" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Information" EntityType="Self.Information" />
+          <EntitySet Name="Orders" EntityType="taskModel.Order" />
+          <AssociationSet Name="FK__Orders__Customer__398D8EEE" Association="taskModel.FK__Orders__Customer__398D8EEE">
+            <End Role="Information" EntitySet="Information" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Information" Relationship="taskModel.FK__Orders__Customer__398D8EEE" FromRole="Order" ToRole="Information" />
+        </EntityType>
+        <Association Name="FK__Orders__Customer__398D8EEE">
+          <End Type="taskModel.Information" Role="Information" Multiplicity="0..1" />
+          <End Type="taskModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Information">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -64,6 +116,15 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="taskModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

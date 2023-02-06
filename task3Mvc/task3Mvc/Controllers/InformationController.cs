@@ -123,7 +123,7 @@ namespace task3Mvc.Controllers
                     string fileName = Path.GetFileName(cv.FileName);
                     string path = Path.Combine(folderPath, fileName);
                     cv.SaveAs(path);
-                    information.Cv = "../Content/CVs/" + fileName;
+                    information.Cv = "" + fileName;
                 }
                 else
                 {
@@ -146,6 +146,8 @@ namespace task3Mvc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+
             Information information = db.Information.Find(id);
             if (information == null)
             {
@@ -159,14 +161,62 @@ namespace task3Mvc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Phone,Age,Job_Title,Gender")] Information information)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Phone,Age,Job_Title,Gender")] Information information, HttpPostedFileBase Image, HttpPostedFileBase cv)
         {
             if (ModelState.IsValid)
             {
+
+                if (Image != null)
+                {
+                    if (!Image.ContentType.ToLower().StartsWith("image/"))
+                    {
+                        ModelState.AddModelError("", "file uploaded is not an image");
+                        return View(information);
+                    }
+                    string folderPath = Server.MapPath("~/Content/Images");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(Image.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    Image.SaveAs(path);
+                    information.Image = "../Content/Images/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an image.");
+                    return View(information);
+                }
+                if (cv != null)
+                {
+                    //if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    //{
+                    //    ModelState.AddModelError("", "file uploaded is not an image");
+                    //    return View(user);
+                    //}
+                    string folderPath = Server.MapPath("~/Content/CVs");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(cv.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    cv.SaveAs(path);
+                    information.Cv = "~/Cv" + fileName;
+
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an cv.");
+                    return View(information);
+                }
                 db.Entry(information).State = (System.Data.Entity.EntityState)System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+
             return View(information);
         }
 
