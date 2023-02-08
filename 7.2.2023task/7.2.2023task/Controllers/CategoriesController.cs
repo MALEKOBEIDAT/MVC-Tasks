@@ -52,7 +52,7 @@ namespace _7._2._2023task.Controllers
             if (ModelState.IsValid)
             {
 
-                if (Image != null)
+                if (Image != null)                                                  
                 {
                     if (!Image.ContentType.ToLower().StartsWith("image/"))
                     {

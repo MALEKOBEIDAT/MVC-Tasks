@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="90c5688179304915b2d06ff33c07b204" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="taskModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="1.5" />
+        <EntityTypeShape EntityType="taskModel.AspNetRole" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="taskModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="taskModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="taskModel.AspNetUserRole" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="taskModel.AspNetUser" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="taskModel.Category" Width="1.5" PointX="7.75" PointY="1.5" />
+        <EntityTypeShape EntityType="taskModel.Information" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="taskModel.Order" Width="1.5" PointX="8" PointY="8.375" />
+        <AssociationConnector Association="taskModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="taskModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="taskModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="taskModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="taskModel.FK__Orders__Customer__398D8EEE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -39,6 +39,8 @@ body {
 	font-smoothing: antialiased;
 }
 
+
+
 h1,
 h2,
 h3,
@@ -87,6 +89,7 @@ p {
 img {
 	max-width: 100%;
 }
+
 
 input:focus,
 select:focus,
@@ -1619,7 +1622,7 @@ ol {
 	color: #b2b2b2;
 }
 
-.newslatter-item .subscribe-form input::-ms-input-placeholder {
+.newslatter-item .subscribe-form input:-ms-input-placeholder {
 	color: #b2b2b2;
 }
 

@@ -34,7 +34,7 @@
             @Html.DisplayFor(modelItem => item.CatName)
         </td>
         <td>
-            <img src="~/image/@item.Image" alt="Alternate Text" width="100px" height="100px" />
+            <img class="thumbnail" src="~/image/@item.Image" alt="Alternate Text" width="100px" height="100px" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
@@ -42,8 +42,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.NewPrice)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CatID }) |
+        <td >
+            @Html.ActionLink("Edit", "Edit" , new { id=item.CatID }) |
             @Html.ActionLink("Details", "Details", new { id=item.CatID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CatID })
         </td>
