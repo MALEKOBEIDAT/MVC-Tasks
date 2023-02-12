@@ -294,6 +294,7 @@
     <Content Include="img\logo-carousel\logo-4.png" />
     <Content Include="img\logo-carousel\logo-5.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\pants.jpg" />
     <Content Include="img\payment-method.png" />
     <Content Include="img\product-single\avatar-1.png" />
     <Content Include="img\product-single\avatar-2.png" />
@@ -325,6 +326,8 @@
     <Content Include="img\products\women-large.jpg" />
     <Content Include="img\select-product-1.jpg" />
     <Content Include="img\select-product-2.jpg" />
+    <Content Include="img\shose.jfif" />
+    <Content Include="img\te-shert.jfif" />
     <Content Include="img\time-bg.jpg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\imagesloaded.pkgd.min.js" />
