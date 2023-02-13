@@ -13,6 +13,7 @@ namespace NewTask2._12._2023.Controllers
             return View();
         }
 
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -22,15 +23,12 @@ namespace NewTask2._12._2023.Controllers
 
         public ActionResult ErrorAction()
 
-
         {
+
 
             int x = 110;
             int z = 0;
             int y = x/z;
-
-
-
             return View();
         }
 
